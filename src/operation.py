@@ -4,7 +4,7 @@ def addition(a: int, b: int) -> int:
     """
     return a+b
 
-def subraction(a: int, b: int) -> int:
+def subtraction(a: int, b: int) -> int:
     """
     Function to perform subtraction of two integers.
     """
