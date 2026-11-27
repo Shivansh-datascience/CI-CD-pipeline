@@ -1,0 +1,1 @@
+Basic CI/CD Pipeline practice using CRUD Operation for MLOPS Learning
