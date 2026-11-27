@@ -1,39 +1,31 @@
+
 name: Python CI
 
-#trigger the worflow on any push to branch or pull request (Multiple branches can there)
 on:
-    push:
-        branches:
-            - main
-    pull_request:
-        branches:
-            - main
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
-    test:
-        runs-on: ubuntu-latest  #containers (windows/macOS/ubuntu)
+  test:
+    runs-on: ubuntu-latest
 
-        #for every worflow steps we define the steps
-        steps:
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-            #Step 1: Checkout code from github repo
-            - name: check out code
-              uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
 
-            #Step 2:- Set up Python Environment
-            - name: Set up Python
-              uses: actions/setup-python@v2
-              with:
-                python-version: '3.14'
-            
-            #Step 3: Install dependencies
-            - name: Install Dependencies
-              run: |
-                python -m pip install --upgrade pip
-                pip install -r requirements.txt
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
-            #Step 4: Run tests
-            - name: Run tests
-              run: pytest
-    
-            
+      - name: Run tests
+        run: pytest
